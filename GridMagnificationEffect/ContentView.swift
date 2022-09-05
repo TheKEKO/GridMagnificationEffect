@@ -26,6 +26,9 @@ struct ContentView: View {
                             GeometryReader{ innerProxy in
                                 let rect = innerProxy.frame(in: .named("GESTURE"))
                                 let scale = itemScale(rect: rect, size: size)
+                                
+                                // MARK: Instead Of Manual Calculation
+                                let trasnformedRect = rect.applying(.init(scaleX: scale, y: scale))
                             }
                         }
                     }
