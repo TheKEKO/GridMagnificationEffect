@@ -44,7 +44,7 @@ struct ContentView: View {
                                             y: location.y - transformedLocation.y)
                                 
                                 // MARK: For Effect 2 Simple Replace Scale Location
-                                //                                    .scaleEffect(scale)
+//                                    .scaleEffect(scale)
                             }
                             .padding(5)
                             .frame(height:width)
@@ -64,8 +64,17 @@ struct ContentView: View {
         .preferredColorScheme(.dark)
         .animation(.easeInOut, value: location == .zero)
     }
-}
+    
+    // MARK: Calculating Scale for Each Item With The Help Of Pythagorean Theorem
+    func itemScale(rect: CGRect, size:CGSize) -> CGFloat {
+        let a = location.x - rect.midX
+        let b = location.y - rect.midY
+        
+        let root = sqrt(a*a + b*b)
+        let diagonalValue = sqrt(size.width * size.width + size.height * size.height)
 
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
