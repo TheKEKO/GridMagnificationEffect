@@ -44,7 +44,7 @@ struct ContentView: View {
                                             y: location.y - transformedLocation.y)
                                 
                                 // MARK: For Effect 2 Simple Replace Scale Location
-//                                    .scaleEffect(scale)
+                                //                                    .scaleEffect(scale)
                             }
                             .padding(5)
                             .frame(height:width)
@@ -72,9 +72,16 @@ struct ContentView: View {
         
         let root = sqrt(a*a + b*b)
         let diagonalValue = sqrt(size.width * size.width + size.height * size.height)
-
+        
+        // MARK: For More Detail Divide Diagonal Value
+        let scale = root / (diagonalValue / 2)
+        let modifiedScale = location == .zero ? 1 : (1 - scale)
+        
+        // MARK: To Avoid SwiftUI Transform Warning
+        return modifiedScale > 0 ? modifiedScale : 0.001
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
