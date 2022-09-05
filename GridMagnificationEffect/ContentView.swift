@@ -29,13 +29,21 @@ struct ContentView: View {
                                 
                                 // MARK: Instead Of Manual Calculation
                                 let trasnformedRect = rect.applying(.init(scaleX: scale, y: scale))
+                                
+                                // MARK: Transforming Location Too
+                                let transformedLocation = location.applying(.init(scaleX: scale, y: scale))
+                                
+                                RoundedRectangle(cornerRadius: 4)
+                                    .fill(colors[i % colors.count])
                             }
                         }
+                        
                     }
                 }
         }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
