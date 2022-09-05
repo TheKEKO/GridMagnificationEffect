@@ -44,14 +44,13 @@ struct ContentView: View {
                                             y: location.y - transformedLocation.y)
                                 
                                 // MARK: For Effect 2 Simple Replace Scale Location
-                                //                                    .scaleEffect(scale)
+//                                    .scaleEffect(scale)
                             }
                             .padding(5)
                             .frame(height:width)
                         }
                     }
                 }
-            
         }
         .padding(16)
         .gesture(
