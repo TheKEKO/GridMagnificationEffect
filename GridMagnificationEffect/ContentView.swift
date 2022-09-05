@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @GestureState var location:CGPoint = .zero
     var body: some View {
-        Text("Hello, World!")
+        GeometryReader{proxy in
+            let size = proxy.size
+            
+            // MARK: To Fit Into Whole View
+            let width = size.width/10
+            let itemCount = Int((size.height / width).rounded()) * 10
+        }
     }
 }
 
