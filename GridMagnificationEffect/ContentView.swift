@@ -35,12 +35,34 @@ struct ContentView: View {
                                 
                                 RoundedRectangle(cornerRadius: 4)
                                     .fill(colors[i % colors.count])
+                                
+                                // MARK: For Effect 1
+                                    .scaleEffect(scale)
+                                    .offset(x: trasnformedRect.midX - rect.midX,
+                                            y: trasnformedRect.midY - rect.midY)
+                                    .offset(x: location.x - transformedLocation.x,
+                                            y: location.y - transformedLocation.y)
+                                
+                                // MARK: For Effect 2 Simple Replace Scale Location
+                                //                                    .scaleEffect(scale)
                             }
+                            .padding(5)
+                            .frame(height:width)
                         }
-                        
                     }
                 }
+            
         }
+        .padding(16)
+        .gesture(
+            DragGesture(minimumDistance: 0)
+                .updating($location, body: { value, out, _ in
+                    out = value.location
+                })
+        )
+        .coordinateSpace(name: "GESTURE")
+        .preferredColorScheme(.dark)
+        .animation(.easeInOut, value: location == .zero)
     }
 }
 
